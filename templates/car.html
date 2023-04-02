@@ -48,8 +48,7 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the model</b>      <ion-icon name="car-sport-outline"></ion-icon> </label><br>
-                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1"
-                        onchange="load_fuel_types(this.id,'fuel_type')">
+                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
@@ -63,9 +62,9 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the Fuel Type </b> <ion-icon name="flame-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
-                            <!-- {% for fuel in fuel_types %}
+                            {% for fuel in fuel_types %}
                             <option value="{{ fuel }}">{{ fuel }}</option>
-                            {% endfor %} -->
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
@@ -123,56 +122,6 @@
                         newOption.value="{{ model }}";
                         newOption.innerHTML="{{ model }}";
                         car_model.options.add(newOption);
-                    {% endif %}
-                {% endfor %}
-            }
-        {% endfor %}
-    }
-    function load_fuel_types(model_id,fuel_type_id)
-    {
-        var model=document.getElementById(model_id);
-        var fuel_type= document.getElementById(fuel_type_id);
-        console.log(model.value);
-        fuel_type.value="";
-        fuel_type.innerHTML="";
-        {% for model in car_models %}
-            if( model.value == "{{ model }}")
-            {
-                {% for model in car_models %}
-                    {% if fuel_type == "Petrol" %}
-
-                        var newOption= document.createElement("option");
-                        newOption.value="{{ fuel_type }}";
-                        newOption.innerHTML="{{ fuel_type }}";
-                        fuel_type.options.add(newOption);
-                    {% endif %}
-                    {% if fuel_type == "Diesel" %}
-
-                        var newOption= document.createElement("option");
-                        newOption.value="{{ fuel_type }}";
-                        newOption.innerHTML="{{ fuel_type }}";
-                        fuel_type.options.add(newOption);
-                    {% endif %}
-                    {% if fuel_type == "CNG" %}
-
-                        var newOption= document.createElement("option");
-                        newOption.value="{{ fuel_type }}";
-                        newOption.innerHTML="{{ fuel_type }}";
-                        fuel_type.options.add(newOption);
-                    {% endif %}
-                    {% if fuel_type == "Electric" %}
-
-                        var newOption= document.createElement("option");
-                        newOption.value="{{ fuel_type }}";
-                        newOption.innerHTML="{{ fuel_type }}";
-                        fuel_type.options.add(newOption);
-                    {% endif %}
-                    {% if fuel_type == "LPG" %}
-
-                        var newOption= document.createElement("option");
-                        newOption.value="{{ fuel_type }}";
-                        newOption.innerHTML="{{ fuel_type }}";
-                        fuel_type.options.add(newOption);
                     {% endif %}
                 {% endfor %}
             }
