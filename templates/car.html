@@ -3,7 +3,7 @@
 <head xmlns="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8">
     <title>Car Price Predictor</title>
-    <link rel="stylesheet" href="car.css">
+    <link rel="stylesheet" href="../static/car.css">
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the company</b>                  <ion-icon name="briefcase-outline"></ion-icon> 
                         </label><br>
-                        
+
 
                         <select class="selectpicker form-control" id="company" name="company" required="1"
                                 onchange="load_car_models(this.id,'car_models')">
@@ -48,7 +48,8 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the model</b>      <ion-icon name="car-sport-outline"></ion-icon> </label><br>
-                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
+                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1"
+                        onchange="load_fuel_types(this.id,'fuel_type')">
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
@@ -62,8 +63,24 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the Fuel Type </b> <ion-icon name="flame-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
-                            {% for fuel in fuel_types %}
+                            <!-- {% for fuel in fuel_types %}
                             <option value="{{ fuel }}">{{ fuel }}</option>
+                            {% endfor %} -->
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Ownership</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <select class="selectpicker form-control" id="owner_type" name="owner_type" required="1">
+                            {% for owner_type in owner_types %}
+                            <option value="{{ owner_type }}">{{ owner_type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Transmission type</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required="1">
+                            {% for transmission_type in transmission_types %}
+                            <option value="{{ transmission_type }}">{{ transmission_type }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -86,8 +103,8 @@
         </div>
     </div>
 </div>
-<!-- 
-<script>
+
+<script type="text/javascript">
 
     function load_car_models(company_id,car_model_id)
     {
@@ -111,34 +128,84 @@
             }
         {% endfor %}
     }
-
-    function form_handler(event) {
-        event.preventDefault(); // Don't submit the form normally
-    }
-    function send_data()
+    function load_fuel_types(model_id,fuel_type_id)
     {
-        document.querySelector('form').addEventListener("submit",form_handler);
+        var model=document.getElementById(model_id);
+        var fuel_type= document.getElementById(fuel_type_id);
+        console.log(model.value);
+        fuel_type.value="";
+        fuel_type.innerHTML="";
+        {% for model in car_models %}
+            if( model.value == "{{ model }}")
+            {
+                {% for model in car_models %}
+                    {% if fuel_type == "Petrol" %}
 
-        var fd=new FormData(document.querySelector('form'));
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ fuel_type }}";
+                        newOption.innerHTML="{{ fuel_type }}";
+                        fuel_type.options.add(newOption);
+                    {% endif %}
+                    {% if fuel_type == "Diesel" %}
 
-        var xhr= new XMLHttpRequest({mozSystem: true});
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ fuel_type }}";
+                        newOption.innerHTML="{{ fuel_type }}";
+                        fuel_type.options.add(newOption);
+                    {% endif %}
+                    {% if fuel_type == "CNG" %}
 
-        xhr.open('POST','/predict',true);
-        document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == XMLHttpRequest.DONE){
-                document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ fuel_type }}";
+                        newOption.innerHTML="{{ fuel_type }}";
+                        fuel_type.options.add(newOption);
+                    {% endif %}
+                    {% if fuel_type == "Electric" %}
 
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ fuel_type }}";
+                        newOption.innerHTML="{{ fuel_type }}";
+                        fuel_type.options.add(newOption);
+                    {% endif %}
+                    {% if fuel_type == "LPG" %}
+
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ fuel_type }}";
+                        newOption.innerHTML="{{ fuel_type }}";
+                        fuel_type.options.add(newOption);
+                    {% endif %}
+                {% endfor %}
             }
-        };
-
-        xhr.onload= function(){};
-
-        xhr.send(fd);
+        {% endfor %}
     }
+
+    // function form_handler(event) {
+    //     event.preventDefault(); // Don't submit the form normally
+    // }
+    // function send_data()
+    // {
+    //     document.querySelector('form').addEventListener("submit",form_handler);
+
+    //     var fd=new FormData(document.querySelector('form'));
+
+    //     var xhr= new XMLHttpRequest({mozSystem: true});
+
+    //     xhr.open('POST','/predict',true);
+    //     document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == XMLHttpRequest.DONE){
+    //             document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
+
+    //         }
+    //     };
+
+    //     xhr.onload= function(){};
+
+    //     xhr.send(fd);
+    // }
 </script>
 
- -->
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
