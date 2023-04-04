@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <!--Link to JS-->
-    <script src="home.js" defer ></script>
+    <script src="../static/home.js" defer ></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!--Link to css-->
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../static/home.css">
 </head>
 <body>
     <header>
@@ -22,8 +22,8 @@
             <a href="#" class="logo">Car<span>  points</span></a>
             <!-- navlist -->
             <ul class="navbar">
-                <li> <a href="#home" class="active">HOME</a></li>
-                <li> <a href="car.html">Cars</a></li>
+                <li> <a href={{url_for('home')}} class="active">HOME</a></li>
+                <li> <a href={{url_for('cars')}}>Cars</a></li>
                 <li> <a href="#about">About</a></li>
                 <li> <a href="#">Community</a></li>
             </ul>
@@ -34,7 +34,7 @@
                 <input type="search" name="" id="" placeholder="Search here...">
             </div>
             <div class="login">
-                <a href="/signup/index.html">
+                <a href={{url_for('signup')}}>
                 <button class="btn btn1" >Login</button>
                 </a>
             </div>
@@ -60,42 +60,42 @@
     <!-- BoX-1 -->
         <div class="cars-container container">
             <div class="box">
-                <img src="img/car1.jpg" alt="">
+                <img src="../static/img/car1.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         
         <!-- BoX-2 -->
         
             <div class="box">
-                <img src="img/car2.jpg" alt="">
+                <img src="../static/img/car2.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         
         <!-- BoX-1 -->
         
             <div class="box">
-                <img src="img/car3.jpg" alt="">
+                <img src="../static/img/car3.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         
         <!-- BoX-1 -->
         
             <div class="box">
-                <img src="img/car4.jpg" alt="">
+                <img src="../static/img/car4.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         
         <!-- BoX-1 -->
         
             <div class="box">
-                <img src="img/car5.jpg" alt="">
+                <img src="../static/img/car5.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         
         <!-- BoX-1 -->
         
             <div class="box">
-                <img src="img/car6.jpg" alt="">
+                <img src="../static/img/car6.jpg" alt="">
                 <h2> Porshe car</h2>
             </div>
         </div>
@@ -104,7 +104,7 @@
     <!-- About us -->
     <section class="about container" id="about"> 
         <div class="about-img">
-        <img src="img/about.png" alt="">
+        <img src="../static/img/about.png" alt="">
         </div>
         <div class="about-text">
             <span>About us</span>

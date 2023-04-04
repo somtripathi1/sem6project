@@ -3,7 +3,7 @@
 <head xmlns="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8">
     <title>Car Price Predictor</title>
-    <link rel="stylesheet" href="car.css">
+    <link rel="stylesheet" href="../static/car.css">
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the company</b>                  <ion-icon name="briefcase-outline"></ion-icon> 
                         </label><br>
-                        
+
 
                         <select class="selectpicker form-control" id="company" name="company" required="1"
                                 onchange="load_car_models(this.id,'car_models')">
@@ -68,6 +68,22 @@
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Ownership</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <select class="selectpicker form-control" id="owner_type" name="owner_type" required="1">
+                            {% for owner_type in owner_types %}
+                            <option value="{{ owner_type }}">{{ owner_type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
+                        <label><b>Select Transmission type</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required="1">
+                            {% for transmission_type in transmission_types %}
+                            <option value="{{ transmission_type }}">{{ transmission_type }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Enter the Number of Kilometres that the car has travelled</b> <ion-icon name="footsteps-outline"></ion-icon></label><br>
                         <input type="text" class="form-control" id="kilo_driven" name="kilo_driven"
                                placeholder="Enter the kilometres driven ">
@@ -86,8 +102,8 @@
         </div>
     </div>
 </div>
-<!-- 
-<script>
+
+<script type="text/javascript">
 
     function load_car_models(company_id,car_model_id)
     {
@@ -112,33 +128,33 @@
         {% endfor %}
     }
 
-    function form_handler(event) {
-        event.preventDefault(); // Don't submit the form normally
-    }
-    function send_data()
-    {
-        document.querySelector('form').addEventListener("submit",form_handler);
+    // function form_handler(event) {
+    //     event.preventDefault(); // Don't submit the form normally
+    // }
+    // function send_data()
+    // {
+    //     document.querySelector('form').addEventListener("submit",form_handler);
 
-        var fd=new FormData(document.querySelector('form'));
+    //     var fd=new FormData(document.querySelector('form'));
 
-        var xhr= new XMLHttpRequest({mozSystem: true});
+    //     var xhr= new XMLHttpRequest({mozSystem: true});
 
-        xhr.open('POST','/predict',true);
-        document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
-        xhr.onreadystatechange = function(){
-            if(xhr.readyState == XMLHttpRequest.DONE){
-                document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
+    //     xhr.open('POST','/predict',true);
+    //     document.getElementById('prediction').innerHTML="Wait! Predicting Price.....";
+    //     xhr.onreadystatechange = function(){
+    //         if(xhr.readyState == XMLHttpRequest.DONE){
+    //             document.getElementById('prediction').innerHTML="Prediction: ₹"+xhr.responseText;
 
-            }
-        };
+    //         }
+    //     };
 
-        xhr.onload= function(){};
+    //     xhr.onload= function(){};
 
-        xhr.send(fd);
-    }
+    //     xhr.send(fd);
+    // }
 </script>
 
- -->
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
