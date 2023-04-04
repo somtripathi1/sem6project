@@ -33,7 +33,7 @@
                     <h5>This app predicts the price of a car you want to sell. Try filling the details below: </h5>
                 </div>
                 <br>
-                <form method="post" accept-charset="utf-8" name="Modelform">
+                <form action="{{url_for('predict')}}" method="post" >
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the company</b>                  <ion-icon name="briefcase-outline"></ion-icon> 
                         </label><br>
@@ -41,6 +41,7 @@
 
                         <select class="selectpicker form-control" id="company" name="company" required="1"
                                 onchange="load_car_models(this.id,'car_models')">
+                            <option>Select Company</option>
                             {% for company in companies %}
                             <option value="{{ company }}">{{ company }}</option>
                             {% endfor %}
@@ -49,11 +50,13 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the model</b>      <ion-icon name="car-sport-outline"></ion-icon> </label><br>
                         <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
+                            <option>Select model</option>
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Year of Purchase</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="year" name="year" required="1">
+                            <option>Select Year</option>
                             {% for year in years %}
                             <option value="{{ year }}">{{ year }}</option>
                             {% endfor %}
@@ -62,6 +65,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the Fuel Type </b> <ion-icon name="flame-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
+                            <option>Select Fuel Type</option>
                             {% for fuel in fuel_types %}
                             <option value="{{ fuel }}">{{ fuel }}</option>
                             {% endfor %}
@@ -70,6 +74,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Ownership</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="owner_type" name="owner_type" required="1">
+                            <option>Select Owner Type</option>
                             {% for owner_type in owner_types %}
                             <option value="{{ owner_type }}">{{ owner_type }}</option>
                             {% endfor %}
@@ -78,6 +83,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Transmission type</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required="1">
+                            <option>Select transmission Type</option>
                             {% for transmission_type in transmission_types %}
                             <option value="{{ transmission_type }}">{{ transmission_type }}</option>
                             {% endfor %}
@@ -89,13 +95,13 @@
                                placeholder="Enter the kilometres driven ">
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
-                        <button  class="btn btn-primary form-control" onclick="send_data()">Predict Price</button>
+                        <button  class="btn btn-primary form-control" type="submit">Predict Price</button>
                     </div>
                 </form>
                 <br>
                 <div class="row">
                     <div class="col-12" style="text-align: center">
-                        <h4><span id="prediction"></span></h4>
+                        <h4><span id="prediction">{{prediction_text}}</span></h4>
                     </div>
                 </div>
             </div>
