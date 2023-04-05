@@ -1,0 +1,13 @@
+Flask==1.1.2
+pandas==1.5.3
+numpy==1.24.2
+python-dateutil==2.8.2
+pytz==2023.3
+scipy==1.10.1
+scikit-learn==1.2.2
+joblib==1.2.0
+threadpoolctl==3.1.0
+jinja2==2.11.2
+MarkupSafe==1.1.1
+pickle-mixin==1.0.2
+itsdangerous==1.1.0
