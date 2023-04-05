@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head xmlns="http://www.w3.org/1999/xhtml">
+<head>
     <meta charset="UTF-8">
     <title>Car Price Predictor</title>
     <link rel="stylesheet" href="../static/car.css">
@@ -39,9 +39,8 @@
                         </label><br>
 
 
-                        <select class="selectpicker form-control" id="company" name="company" required="1"
-                                onchange="load_car_models(this.id,'car_models')">
-                            <option>Select Company</option>
+                        <select class="selectpicker form-control" id="company" name="company" onchange="load_car_models(this.id,'car_models')" required>
+                            <option value="">Select Company</option>
                             {% for company in companies %}
                             <option value="{{ company }}">{{ company }}</option>
                             {% endfor %}
@@ -49,14 +48,14 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the model</b>      <ion-icon name="car-sport-outline"></ion-icon> </label><br>
-                        <select class="selectpicker form-control" id="car_models" name="car_models" required="1">
-                            <option>Select model</option>
+                        <select class="selectpicker form-control" id="car_models" name="car_models" required>
+                            <option value="">Select model</option>
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Year of Purchase</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
-                        <select class="selectpicker form-control" id="year" name="year" required="1">
-                            <option>Select Year</option>
+                        <select class="selectpicker form-control" id="year" name="year" required>
+                            <option value="">Select Year</option>
                             {% for year in years %}
                             <option value="{{ year }}">{{ year }}</option>
                             {% endfor %}
@@ -64,8 +63,8 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select the Fuel Type </b> <ion-icon name="flame-outline"></ion-icon></label><br>
-                        <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required="1">
-                            <option>Select Fuel Type</option>
+                        <select class="selectpicker form-control" id="fuel_type" name="fuel_type" required>
+                            <option value="">Select Fuel Type</option>
                             {% for fuel in fuel_types %}
                             <option value="{{ fuel }}">{{ fuel }}</option>
                             {% endfor %}
@@ -73,8 +72,8 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Ownership</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
-                        <select class="selectpicker form-control" id="owner_type" name="owner_type" required="1">
-                            <option>Select Owner Type</option>
+                        <select class="selectpicker form-control" id="owner_type" name="owner_type" required>
+                            <option value="">Select Owner Type</option>
                             {% for owner_type in owner_types %}
                             <option value="{{ owner_type }}">{{ owner_type }}</option>
                             {% endfor %}
@@ -82,8 +81,8 @@
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Select Transmission type</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
-                        <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required="1">
-                            <option>Select transmission Type</option>
+                        <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required>
+                            <option value="">Select transmission Type</option>
                             {% for transmission_type in transmission_types %}
                             <option value="{{ transmission_type }}">{{ transmission_type }}</option>
                             {% endfor %}
@@ -92,7 +91,7 @@
                     <div class="col-md-10 form-group" style="text-align: center">
                         <label><b>Enter the Number of Kilometres that the car has travelled</b> <ion-icon name="footsteps-outline"></ion-icon></label><br>
                         <input type="text" class="form-control" id="kilo_driven" name="kilo_driven"
-                               placeholder="Enter the kilometres driven ">
+                               placeholder="Enter the kilometres driven " required>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
                         <button  class="btn btn-primary form-control" type="submit">Predict Price</button>
