@@ -2,6 +2,10 @@ from flask import Flask,render_template,request,jsonify
 import pickle
 import numpy as np
 import pandas as pd
+import locale
+
+locale.setlocale(locale.LC_MONETARY, 'en_IN')
+
 app=Flask(__name__)
 
 car=pd.read_csv('Clean_Extract.csv')
@@ -49,8 +53,8 @@ def predict():
      prediction=model.predict(pd.DataFrame(columns=['full_name', 'company', 'year', 'km_driven','owner_type', 'fuel_type', 'transmission_type'],
                               data=np.array([car_model,company,year,driven,owner,fuel_type,transmission]).reshape(1, 7)))
      
-     return render_template("predictionpage.html",prediction_text="₹ {}".format(str(np.round(prediction[0],2))))
-     
+     return render_template("predictionpage.html",prediction_text="{}".format(str(locale.currency((np.round(prediction[0],2)),grouping=True))), company = company.lower(), car_model = car_model.lower())
+
 
 if __name__=='__main__':
     app.run()
