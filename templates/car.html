@@ -71,7 +71,7 @@
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select Ownership</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <label><b>Select Ownership</b> <ion-icon name="card-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="owner_type" name="owner_type" required>
                             <option value="">Select Owner Type</option>
                             {% for owner_type in owner_types %}
@@ -80,7 +80,7 @@
                         </select>
                     </div>
                     <div class="col-md-10 form-group" style="text-align: center">
-                        <label><b>Select Transmission type</b> <ion-icon name="calendar-outline"></ion-icon></label><br>
+                        <label><b>Select Transmission type</b> <ion-icon name="cog-outline"></ion-icon></label><br>
                         <select class="selectpicker form-control" id="transmission_type" name="transmission_type" required>
                             <option value="">Select transmission Type</option>
                             {% for transmission_type in transmission_types %}
@@ -97,6 +97,17 @@
                         <button  class="btn btn-primary form-control" type="submit">Predict Price</button>
                     </div>
                 </form>
+                <br>
+                    <div class="col-md-11 form-group" style="text-align: center">
+                        <button  class="btn btn-primary" style="background-color: #007bff; color: white; border: none;
+                        outline: black;
+                        align-items: center;
+                        font-size: 1rem;
+                        font-weight: 200;
+                        padding: 1rem;
+                        border-radius: 0.1rem;
+                        cursor: pointer;" onclick="location.href='{{url_for('home')}}'">Home Page</button>
+                    </div>
                 <br>
                 <div class="row">
                     <div class="col-12" style="text-align: center">
